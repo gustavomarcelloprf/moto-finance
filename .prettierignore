@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+dist
+build
+coverage
+.turbo
+.vercel
+pnpm-lock.yaml
+*.log
+android
+ios

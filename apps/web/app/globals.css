@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Paleta MotoFinance — Contrato visual.
+ * Valores em formato R G B (sem vírgulas) para suportar /<alpha-value> do Tailwind.
+ * Ver: docs/ARCHITECTURE.md > AGENT-SECTION: ui-contract
+ */
+@layer base {
+  :root {
+    /* Light mode */
+    --color-bg: 255 255 255;
+    --color-fg: 11 11 15;
+    --color-muted: 245 245 247;
+    --color-border: 229 229 234;
+    --color-accent: 255 107 0; /* #FF6B00 */
+    --color-accent-fg: 255 255 255;
+    --color-positive: 22 163 74; /* #16A34A */
+    --color-negative: 220 38 38; /* #DC2626 */
+
+    --font-sans:
+      'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      'Segoe UI', Roboto, sans-serif;
+  }
+
+  .dark {
+    --color-bg: 11 11 15;
+    --color-fg: 245 245 247;
+    --color-muted: 28 28 33;
+    --color-border: 39 39 45;
+    --color-accent: 255 107 0;
+    --color-accent-fg: 11 11 15;
+    --color-positive: 34 197 94;
+    --color-negative: 239 68 68;
+  }
+
+  /* Modo alto contraste sol forte — ARCHITECTURE.md ui-contract regra 3
+     Pode ser ativado via prefers-contrast: more OU classe .sunlight */
+  @media (prefers-contrast: more) {
+    :root {
+      --color-fg: 0 0 0;
+      --color-muted: 230 230 230;
+    }
+    .dark {
+      --color-fg: 255 255 255;
+      --color-muted: 0 0 0;
+    }
+  }
+
+  .sunlight {
+    --color-fg: 0 0 0;
+    --color-bg: 255 255 255;
+    --color-border: 0 0 0;
+  }
+
+  /* Tipografia base 18px */
+  html {
+    font-size: 18px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Garantir números financeiros com largura tabular (alinhamento vertical) */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Foco visível para acessibilidade */
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Touch target mínimo 56dp */
+  .touch-target {
+    @apply min-h-touch min-w-touch;
+  }
+}
