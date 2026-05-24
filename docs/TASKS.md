@@ -232,7 +232,7 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Server Action: updateProfile'
   epic: E-M1-02
   owner: agent_backend
-  status: pending
+  status: completed
   blocked_by: [T-011]
   estimate_h: 2
 
