@@ -29,6 +29,13 @@
       "when": 1779654412035,
       "tag": "0003_parallel_mockingbird",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1779656676967,
+      "tag": "0004_trigger_profile_on_signup",
+      "breakpoints": true
     }
   ]
 }

@@ -172,8 +172,8 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
 - id: T-012
   title: 'Server Action: createProfileOnSignup (trigger)'
   epic: E-M1-02
-  owner: agent_backend
-  status: pending
+  owner: agent_db
+  status: completed
   blocked_by: [T-011]
   estimate_h: 2
   acceptance:
