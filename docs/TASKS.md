@@ -160,7 +160,7 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Schema Drizzle: profiles, vehicles'
   epic: E-M1-02
   owner: agent_db
-  status: pending
+  status: completed
   blocked_by: [T-007]
   estimate_h: 3
   files_touch:
