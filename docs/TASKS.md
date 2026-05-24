@@ -220,10 +220,10 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Middleware: rotas autenticadas + redirect'
   epic: E-M1-02
   owner: agent_backend
-  status: pending
+  status: completed
   blocked_by: [T-013]
   estimate_h: 2
-  files_touch: ['apps/web/middleware.ts']
+  files_touch: ['apps/web/middleware.ts', 'apps/web/lib/server/supabase.ts']
   acceptance:
     - '/(app)/* sem sessão → redirect /login'
     - '/(auth)/* com sessão → redirect /dashboard'
