@@ -131,90 +131,17 @@ T4 (humano)
 
 ## Prompts Iniciais para cada Worktree
 
-> **Para cada Claude CLI dedicada**, cole **PRIMEIRA mensagem** o prompt da sua persona abaixo. Isso "ancora" a sessão.
+Os prompts iniciais de cada persona (`agent_db`, `agent_frontend`, `agent_backend`, `agent_auditor`) são entregues fora deste repositório — gerados pela orquestração humano + IA conforme o sprint atual. **Não devem ser commitados aqui** para evitar duplicação com `AGENTS.md` (fonte de verdade da identidade das personas) e para permitir iteração rápida sem inflar histórico de docs.
 
-### Prompt inicial — `agent_db` (em `moto-finance--db/`)
+A regra é: cada Claude CLI dedicada deve receber, como **primeira mensagem da sessão**:
 
-```
-Você é o agent_db do MotoFinance. Leia EXATAMENTE estes arquivos antes de qualquer ação:
+1. Sua identidade (`agent_<X>`) — referenciar `AGENTS.md > AGENT-SECTION: agent_<X>`.
+2. Os arquivos que pode tocar (escopo de escrita).
+3. A primeira `T-NNN` a executar de `TASKS.md`.
+4. Eventuais dependências (`blocked_by`) a verificar antes de começar.
+5. A mensagem de commit a usar quando concluir.
 
-1. docs/AGENTS.md (seção AGENT-SECTION: agent_db)
-2. docs/AGENTS.md (seção AGENT-SECTION: universal)
-3. docs/ARCHITECTURE.md (seção AGENT-SECTION: data-model)
-4. docs/ROADMAP.md (seção AGENT-SECTION: status-global, m1-epics)
-5. docs/TASKS.md (apenas tasks com epic E-M1-02, E-M1-04, E-M1-05, E-M1-06)
-
-Seu escopo de escrita: APENAS packages/db/src/schema/**, packages/db/migrations/**.
-
-Sua primeira task é T-011 (Schema Drizzle: profiles, vehicles). Atualize o status para in_progress em TASKS.md ANTES de começar. Implemente conforme os tipos descritos em data-model. Crie a migration SQL. Aplique RLS owner_only em todas as tabelas com user_id.
-
-Depois de terminar, marque T-011 como completed em TASKS.md, faça commit com mensagem "feat(db): schema profiles e vehicles com RLS (T-011)", e prossiga para T-028.
-
-NÃO toque em apps/web/**, packages/ui/**, ou docs/ (exceto TASKS.md status). Se precisar de decisão arquitetural não documentada, PARE e escreva uma proposta de ADR em docs/DECISIONS/.
-```
-
-### Prompt inicial — `agent_frontend` (em `moto-finance--ui/`)
-
-```
-Você é o agent_frontend do MotoFinance. Leia EXATAMENTE:
-
-1. docs/AGENTS.md (AGENT-SECTION: agent_frontend, universal)
-2. docs/ARCHITECTURE.md (AGENT-SECTION: ui-contract, dir-structure)
-3. docs/ROADMAP.md (AGENT-SECTION: status-global, m1-epics)
-4. docs/TASKS.md (apenas T-026, T-039, T-057, T-054)
-
-Seu escopo de escrita: apps/web/components/**, apps/web/app/**, packages/ui/src/**.
-
-Sua primeira task é T-026 (PlatformChip). Atualize status para in_progress em TASKS.md. Implemente em packages/ui/src/platform-chip.tsx. Touch target ≥56dp. Contraste AAA. Acessibilidade: aria-label, role="button", focus visível.
-
-Depois marque completed, commit "feat(ui): componente PlatformChip (T-026)", e prossiga para T-039.
-
-NÃO toque em packages/db/**, apps/web/actions/**, ou apps/web/api/**.
-```
-
-### Prompt inicial — `agent_backend` (em `moto-finance--auth/`)
-
-```
-Você é o agent_backend do MotoFinance. Leia EXATAMENTE:
-
-1. docs/AGENTS.md (AGENT-SECTION: agent_backend, universal)
-2. docs/ARCHITECTURE.md (AGENT-SECTION: api-contracts, conventions, data-model)
-3. docs/ROADMAP.md (AGENT-SECTION: m1-epics)
-4. docs/TASKS.md (épico E-M1-02, especialmente T-012, T-016, T-017, T-018)
-
-Seu escopo de escrita: apps/web/actions/**, apps/web/api/**, apps/web/lib/server/**, packages/shared/validators/**, packages/shared/types/**.
-
-IMPORTANTE: Sua primeira task (T-012) DEPENDE de T-011 (executada pelo agent_db em outra worktree). Antes de começar, faça `git fetch --all` e verifique se origin/feat/db-foundation já tem T-011 completed. Se não, marque T-012 como blocked em TASKS.md (status: blocked, blocked_by: T-011) e PARE.
-
-Quando T-011 estiver disponível, faça `git merge origin/feat/db-foundation` (ou rebase), atualize T-012 para in_progress, implemente o trigger Postgres createProfileOnSignup, commit "feat(auth): trigger profile on signup (T-012)".
-
-NÃO toque em packages/ui/**, packages/db/src/schema/** (já feito por agent_db).
-```
-
-### Prompt inicial — `agent_auditor` (em `moto-finance/` main)
-
-```
-Você é o agent_auditor do MotoFinance. Sua função é REVISAR, não escrever código.
-
-Leia primeiro:
-1. docs/AGENTS.md (AGENT-SECTION: agent_auditor) — toda sua spec
-2. docs/AGENTS.md (AGENT-SECTION: universal) — regras gerais
-3. docs/WORKFLOW.md — entender a topologia
-
-Seu fluxo:
-1. `git fetch --all` para pegar todas branches remotas.
-2. `git branch -r | grep feat/` para listar branches em desenvolvimento.
-3. Para cada branch `feat/*`:
-   a. `git log main..origin/feat/<branch> --oneline` — listar commits novos.
-   b. `git diff main..origin/feat/<branch> --stat` — quais arquivos mudaram.
-   c. Aplicar os 14 checks listados em AGENTS.md > AGENT-SECTION: agent_auditor.
-   d. Escrever relatório em docs/audits/YYYY-MM-DD-<branch>.md no formato canônico.
-4. Reportar para o humano: quantas branches auditadas, total de findings críticos.
-
-NÃO commite código de produção. NÃO mude TASKS.md status. NÃO edite ARCHITECTURE/ROADMAP — proponha via ADR.
-
-Comece: faça os 3 primeiros passos e me reporte quantas branches existem e o status de cada uma.
-```
+Template canônico em uma frase: _"Você é `agent_<X>`. Leia `AGENTS.md > AGENT-SECTION: agent*<X>`e`AGENTS.md > AGENT-SECTION: universal`. Sua primeira task é `T-NNN`. Antes de mexer em qualquer arquivo, atualize status para `in_progress`em`TASKS.md`. Após concluir, commit `<conventional-commit-message>`e prossiga para a próxima`pending` no seu escopo."*
 
 ---
 
