@@ -431,9 +431,11 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Componente: CategoryChip (com ícone + cor + label)'
   epic: E-M1-05
   owner: agent_frontend
-  status: pending
+  status: completed
   blocked_by: [T-002]
   estimate_h: 2
+  files_touch: ['packages/ui/src/category-chip.tsx', 'packages/ui/src/index.ts']
+  notes: 'Ícone Lucide pendente — lucide-react não está no workspace; renderiza só label conforme contrato de fallback. Adicionar ícones em task de follow-up quando lucide-react for instalado.'
 
 - id: T-040
   title: 'Sheet bottom-up: registrar gasto'
