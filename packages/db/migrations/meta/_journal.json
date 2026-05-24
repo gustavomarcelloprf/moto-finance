@@ -8,6 +8,13 @@
       "when": 1779653758662,
       "tag": "0000_eager_hellion",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1779654267349,
+      "tag": "0001_clever_argent",
+      "breakpoints": true
     }
   ]
 }

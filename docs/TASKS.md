@@ -331,7 +331,7 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Schema Drizzle: earnings'
   epic: E-M1-04
   owner: agent_db
-  status: pending
+  status: completed
   blocked_by: [T-011]
   estimate_h: 2
 
