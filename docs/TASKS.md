@@ -602,10 +602,10 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Componente: NumberCard (positive/negative/neutral)'
   epic: E-M1-07
   owner: agent_frontend
-  status: pending
+  status: completed
   blocked_by: [T-002]
   estimate_h: 2
-  files_touch: ['packages/ui/number-card.tsx']
+  files_touch: ['packages/ui/src/number-card.tsx', 'packages/ui/src/index.ts']
 
 - id: T-058
   title: "Botão 'Encerrar turno' — modal resumo do dia"
