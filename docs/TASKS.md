@@ -309,10 +309,10 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Componente compartilhado: PlatformChip (iFood/Rappi/Uber/99/Direct/Other)'
   epic: E-M1-03
   owner: agent_frontend
-  status: pending
+  status: completed
   blocked_by: [T-002]
   estimate_h: 2
-  files_touch: ['packages/ui/platform-chip.tsx']
+  files_touch: ['packages/ui/src/platform-chip.tsx', 'packages/ui/src/index.ts']
 
 - id: T-027
   title: 'Constants: PLATFORMS, FUEL_TYPES, EXPENSE_CATEGORIES, SHIFTS'

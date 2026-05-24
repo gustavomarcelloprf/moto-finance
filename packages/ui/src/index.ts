@@ -2,7 +2,7 @@
  * Componentes UI reutilizáveis MotoFinance.
  *
  * Componentes serão adicionados conforme tasks:
- *   - T-026: PlatformChip
+ *   - T-026: PlatformChip ✅
  *   - T-039: CategoryChip
  *   - T-057: NumberCard
  *
@@ -10,3 +10,5 @@
  */
 
 export { cn } from './cn.js';
+export { PlatformChip, type PlatformChipProps } from './platform-chip.js';
+export { type PlatformId } from '@motofinance/shared';
