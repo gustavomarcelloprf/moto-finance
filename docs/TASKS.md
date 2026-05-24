@@ -467,7 +467,7 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Schema Drizzle: fuel_entries + view derivada (kml, cost_per_km)'
   epic: E-M1-06
   owner: agent_db
-  status: pending
+  status: completed
   blocked_by: [T-011, T-018]
   estimate_h: 3
   acceptance:

@@ -22,6 +22,13 @@
       "when": 1779654337840,
       "tag": "0002_useful_morgan_stark",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1779654412035,
+      "tag": "0003_parallel_mockingbird",
+      "breakpoints": true
     }
   ]
 }

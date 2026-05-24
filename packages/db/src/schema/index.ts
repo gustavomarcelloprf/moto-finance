@@ -17,3 +17,4 @@ export * from './profiles';
 export * from './vehicles';
 export * from './earnings';
 export * from './expenses';
+export * from './fuel-entries';
