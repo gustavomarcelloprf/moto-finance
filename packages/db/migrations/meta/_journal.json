@@ -15,6 +15,13 @@
       "when": 1779654267349,
       "tag": "0001_clever_argent",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1779654337840,
+      "tag": "0002_useful_morgan_stark",
+      "breakpoints": true
     }
   ]
 }
