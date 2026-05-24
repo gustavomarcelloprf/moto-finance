@@ -160,7 +160,7 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Schema Drizzle: profiles, vehicles'
   epic: E-M1-02
   owner: agent_db
-  status: pending
+  status: completed
   blocked_by: [T-007]
   estimate_h: 3
   files_touch:
@@ -331,7 +331,7 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Schema Drizzle: earnings'
   epic: E-M1-04
   owner: agent_db
-  status: pending
+  status: completed
   blocked_by: [T-011]
   estimate_h: 2
 
@@ -407,7 +407,7 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Schema Drizzle: expenses'
   epic: E-M1-05
   owner: agent_db
-  status: pending
+  status: completed
   blocked_by: [T-011]
   estimate_h: 2
 
@@ -467,7 +467,7 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Schema Drizzle: fuel_entries + view derivada (kml, cost_per_km)'
   epic: E-M1-06
   owner: agent_db
-  status: pending
+  status: completed
   blocked_by: [T-011, T-018]
   estimate_h: 3
   acceptance:
