@@ -180,7 +180,7 @@ Se qualquer um dos arquivos acima estiver ausente ou em conflito: **abra ADR em 
 
 **Princípios.**
 
-- Migrations sempre **reversíveis** (`up` + `down`).
+- Migrations são **forward-only** (ver `docs/DECISIONS/0006-forward-only-migrations.md`). Rollback é feito via nova migration corretiva.
 - Toda tabela nova: PK uuid, `created_at`, `updated_at`, RLS policy.
 - Toda FK com `ON DELETE` definido (cascade ou restrict — nunca default).
 - Índices criados para toda query listada nos endpoints.
@@ -188,7 +188,7 @@ Se qualquer um dos arquivos acima estiver ausente ou em conflito: **abra ADR em 
 
 **Definição de Pronto.**
 
-- Migration roda forward e rollback sem erro.
+- Migration roda forward sem erro em DB efêmero/dev.
 - RLS testada com 2 usuários (cada um vê só seus dados).
 - Índices documentados em `ARCHITECTURE.md`.
 

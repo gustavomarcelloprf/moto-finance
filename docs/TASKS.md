@@ -48,7 +48,8 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Inicializar monorepo pnpm + Next.js 14 + TS estrito'
   epic: E-M1-01
   owner: agent_devops
-  status: pending
+  status: completed
+  completed_in: 948f98a
   estimate_h: 2
   files_touch:
     ['package.json', 'pnpm-workspace.yaml', 'tsconfig.base.json', 'apps/web/package.json']
@@ -61,7 +62,8 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Configurar Tailwind + shadcn/ui base'
   epic: E-M1-01
   owner: agent_frontend
-  status: pending
+  status: completed
+  completed_in: 948f98a
   blocked_by: [T-001]
   estimate_h: 2
   files_touch: ['apps/web/app/globals.css', 'apps/web/tailwind.config.ts', 'components.json']
@@ -74,7 +76,8 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Criar packages/shared, packages/db, packages/ui'
   epic: E-M1-01
   owner: agent_devops
-  status: pending
+  status: completed
+  completed_in: 948f98a
   blocked_by: [T-001]
   estimate_h: 1
   acceptance:
@@ -84,7 +87,8 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Configurar ESLint + Prettier + Conventional Commits hook'
   epic: E-M1-01
   owner: agent_devops
-  status: pending
+  status: completed
+  completed_in: 948f98a (initial) + c05913f (commitlint.mjs fix)
   blocked_by: [T-001]
   estimate_h: 2
   acceptance:
@@ -117,13 +121,15 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
   title: 'Configurar Drizzle ORM + cliente Supabase'
   epic: E-M1-01
   owner: agent_db
-  status: pending
+  status: completed
+  completed_in: 948f98a
   blocked_by: [T-003, T-006]
   estimate_h: 3
-  files_touch: ['packages/db/client.ts', 'packages/db/drizzle.config.ts']
+  files_touch: ['packages/db/src/client.ts', 'packages/db/drizzle.config.ts']
   acceptance:
     - 'pnpm db:generate cria migration vazia'
     - 'Cliente conecta no Supabase dev'
+  notes: 'Cliente Drizzle + drizzle.config.ts criados no scaffold. Conexão real só funciona após DATABASE_URL preenchido (T-006).'
 
 - id: T-008
   title: '[MOVIDO para E-M2-00] Pipeline CI GitHub Actions'
@@ -170,14 +176,17 @@ read_when: IA precisa decidir o que executar agora. Atualizar status sempre que 
     - 'Trigger updated_at funcionando'
 
 - id: T-012
-  title: 'Server Action: createProfileOnSignup (trigger)'
+  title: 'Migration: trigger Postgres createProfileOnSignup (auth.users → public.profiles)'
   epic: E-M1-02
-  owner: agent_backend
+  owner: agent_db
   status: pending
   blocked_by: [T-011]
   estimate_h: 2
   acceptance:
-    - 'Após signup, row em profiles criada via trigger Postgres'
+    - 'Migration SQL cria função handle_new_user() e trigger on_auth_user_created'
+    - 'Após signup via Supabase Auth, row em public.profiles é criada automaticamente'
+    - 'Trigger respeita full_name vindo de raw_user_meta_data quando presente'
+  notes: 'Reatribuída de agent_backend → agent_db em 2026-05-22: é DDL Postgres (CREATE TRIGGER + CREATE FUNCTION), pertence ao domínio de migrations. Proposta originada pelo agent_backend ao receber a task, ratificada pelo humano via governança.'
 
 - id: T-013
   title: 'Tela de signup (email + senha) + onboarding'

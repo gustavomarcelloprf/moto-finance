@@ -153,8 +153,15 @@ motofinance/
 ### Commits
 
 - Conventional Commits: `feat(scope): ...`, `fix(scope): ...`, `chore: ...`.
-- Scopes válidos: `auth | earnings | expenses | fuel | maintenance | dashboard | billing | infra | docs`.
-- Cada commit cita ao menos 1 `T-NNN` quando aplicável: `feat(fuel): cálculo km/L (T-045)`.
+- Scopes válidos: `auth | earnings | expenses | fuel | maintenance | dashboard | billing | infra | docs | ui | db | shared | qa | release`.
+- **Citação de `T-NNN`:** obrigatória para commits de tipo `feat`, `fix`, `refactor`, `perf`, `test` quando há task correspondente. Exemplo: `feat(fuel): cálculo km/L (T-045)`.
+- **Exceção (não exige `T-NNN`):** commits puramente de manutenção que não correspondem a uma task tracked, listados abaixo. Eles ainda DEVEM seguir Conventional Commits e ser justificáveis.
+  - `chore(infra)`: ajustes em config (tsconfig, prettier, eslint, husky, commitlint, etc.) e renomeações.
+  - `chore(docs)`: edições em `docs/**` que não originam de uma task (correções tipográficas, sync de status, ADRs).
+  - `chore(deps)` / `chore(release)`: bumps de versão.
+  - `chore(release)`: tags/changelogs.
+  - `build(infra)` e `ci(infra)`: alterações em pipelines (M2+) e arquivos de build.
+- **Auditor (`agent_auditor`)**: classifica como WARNING (não bloqueia merge) commits sem `T-NNN` que se enquadrem nas exceções acima. Para commits `feat|fix` sem `T-NNN`, é finding CRÍTICO.
 
 ---
 
